@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Sign Up</title>
+</head>
+<body>
+  <h1 class="sign-up-header">Create Account</h1>
+  <div class="sign-up">
+    <form class="flex-col" action="">
+      <div class="form-inline">
+        <label for="fname">First Name</label>
+        <input class="form-control" name="fname" id="fname" required>
+        <label for="lname">Last Name</label>
+        <input class="form-control" name="lname" id="lname" required>
+      </div>
+      <div>
+        <label for="pw">Password</label>
+        <input type="password" class="form-control" name="password" id="pw" required>
+        <label id="repw">Re-type Password</label>
+        <input type="password" class="form-control" id="repw" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required>
+      </div>
+      <div>
+        <label for="phone-number">Phone Number</label>
+        <input name='phone-number' id='phone-number' required>
+      </div>
+      <br>
+      <button type="submit" class="btn">Sign Up</button>
+    </form>
+  </div>
+</body>
+</html>

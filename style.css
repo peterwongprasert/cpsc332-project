@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.signin-form{
+.signin-form, .sign-up > .flex-col{
   width: 40vw;
   border: solid gray 1px;
   border-radius: .5rem;
@@ -15,6 +15,31 @@
   align-items: center;
 }
 
-h1{
+.aem-header{
   margin: 25vh 0 5vh 0;
+}
+
+.flex-col{
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-col > div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5vh;
+}
+
+.flex-col label {
+  margin-bottom: 5px;
+}
+
+.sign-up{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.sign-up > .flex-col{
+  margin-top: 10vh;
 }
