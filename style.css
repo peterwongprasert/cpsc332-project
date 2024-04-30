@@ -24,6 +24,11 @@
   flex-direction: column;
 }
 
+.flex-row{
+  display: flex;
+  justify-content: center;
+}
+
 .flex-col > div {
   display: flex;
   flex-direction: column;
@@ -43,3 +48,12 @@
 .sign-up > .flex-col{
   margin-top: 10vh;
 }
+
+.main-btn{
+  margin: 15vh 10vw;
+  padding: 10vh 5 vw;
+}
+
+/* .home-container{
+  
+} */

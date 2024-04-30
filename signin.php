@@ -1,1 +1,5 @@
-<? echo "Hello world"; ?>
+<?php
+
+require 'connect.php';
+
+?>
