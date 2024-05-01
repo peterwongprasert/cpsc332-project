@@ -1,18 +1,35 @@
 <?php
+  session_start();
 
-require 'connect.php';
+  require 'connect.php';
 
-if(isset($_POST['username'])){
-  $name = htmlspecialchars($_POST['username']);
-}
-if(isset($_POST['password'])){
-  $pw = htmlspecialchars($_POST['password']);
-}  
+  $id;
+  if(isset($_POST['username'])){
+    $name = $_POST['username'];
+  }
+  if(isset($_POST['password'])){
+    $pw = $_POST['password'];
+  }  
 
-$sql = "SELECT COUNT(*) 
-  FROM `User` 
-  WHERE Name = ? AND Password = ?";
+  $sql = "SELECT UserID 
+    FROM `User` 
+    WHERE `Fname` = ? AND `Pw` = ?";
 
+  $stmt = $db->prepare($sql);
 
+  $stmt->bind_param("ss", $name, $pw);
+  $stmt->execute();
+  $result = $stmt->get_result();
+
+  while($row = $result->fetch_assoc()){
+  //  echo "UserID: " . $row['UserID'];
+    $id = $row['UserID'];
+  }
+
+  if($id){
+    // echo $id . " <br>Sign in";
+    $_SESSION['id'] = $id;
+    echo "success";
+  }
 
 ?>

@@ -54,6 +54,9 @@
   padding: 10vh 5 vw;
 }
 
+.danger{
+  color: rgb(255, 85, 85);
+}
 /* .home-container{
   
 } */
