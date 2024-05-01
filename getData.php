@@ -6,6 +6,7 @@
   }
   require './connect.php';
   
+  // if we pass gs into the URL
   if(isset($_GET['gs'])){
     $sponsors = [];
     
