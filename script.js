@@ -1,3 +1,7 @@
+function sjs(){
+  console.log('in script.js');
+}
+
 function signIn(e) {
   e.preventDefault();
 

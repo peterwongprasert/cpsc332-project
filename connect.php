@@ -10,6 +10,7 @@
     die("Failed to connect to MySQL: " . $db->connect_error);
   }
 
+  
   // EXAMPLE on how to use SELECT in PHP using prepared statements
   // $sql = "SELECT * FROM `Sponsor`";
   // $results = $db->query($sql);

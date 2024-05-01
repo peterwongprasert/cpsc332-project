@@ -1,8 +1,10 @@
 <?php
   session_start();
 
+  // connecting to db
   require 'connect.php';
 
+  // variables 
   $id;
   if(isset($_POST['username'])){
     $name = $_POST['username'];
