@@ -18,6 +18,7 @@
     </div>
     <div>
       <h4>Create event</h4>
+      <!-- TODO: Finish post page -->
       <form action="submit_event.php" method="post">
         <label for="event_name">Event Name:</label>
         <input type="text" id="event_name" name="event_name" required><br>

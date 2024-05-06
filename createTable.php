@@ -18,6 +18,23 @@
       echo "Error creating table: " . $db->error;
     }
   }
+
+  // TODO
+  function createHostTable($db){
+
+  }
+
+  function createPresenterTable($db){
+
+  }
+
+  function createKeynoteTable($db){
+
+  }
+
+  function createSponsorTable($db){
+
+  }
   
   createUserTable($db);
 ?>
