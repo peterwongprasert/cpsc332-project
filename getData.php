@@ -23,6 +23,58 @@
 
     echo json_encode($sponsors);
   }
+  
 
   //TODO: GET host ['gh'], keynote ['gk'], presenter ['gs']
+
+  if(isset($_GET['gk'])){
+    $keynote = [];
+    
+    $sql = 'SELECT SpeakerID, SpeakerName 
+      FROM `Keynote_Speaker` 
+      ORDER BY SpeakerName ASC';
+
+    $result = $db->query($sql);
+    
+    while($row = $result->fetch_assoc()){
+      $keynote[] = $row;
+    }
+    $result->free();
+
+    echo json_encode($keynote);
+  }
+
+  if(isset($_GET['gh'])){
+    $host = [];
+    
+    $sql = 'SELECT UniversityID, UniversityName 
+      FROM `University` 
+      ORDER BY UniversityName ASC';
+
+    $result = $db->query($sql);
+    
+    while($row = $result->fetch_assoc()){
+      $host[] = $row;
+    }
+    $result->free();
+
+    echo json_encode($host);
+  }
+
+  if(isset($_GET['gp'])){
+    $presenter = [];
+    
+    $sql = 'SELECT PresenterID, PresenterName 
+      FROM `Presenter` 
+      ORDER BY PresenterName ASC';
+
+    $result = $db->query($sql);
+    
+    while($row = $result->fetch_assoc()){
+      $presenter[] = $row;
+    }
+    $result->free();
+
+    echo json_encode($presenter);
+  }
 ?>

@@ -29,11 +29,11 @@
         <label for="capacity">Capacity:</label>
         <input type="number" id="capacity" name="capacity" required><br>
     
-        <label for="venue">Venue:</label>
+        <!-- <label for="venue">Venue:</label>
         <select>
           <option>-- Select --</option>
         </select>
-        <br>
+        <br> -->
     
         <label for="start_time">Start Time:</label>
         <input type="datetime-local" id="start_time" name="start_time" required><br>
@@ -56,17 +56,17 @@
         </select>
     
         <label for="presenter">Presenter:</label>
-        <select>
+        <select id='presenter'>
           <option>-- None --</option>
         </select>
     
         <label for="keynote-speaker">Keynote Speaker:</label>
-        <select>
+        <select id="keynote-speaker">
           <option>-- None --</option>
         </select>
     
         <label for="host">Host:</label>
-        <select>
+        <select id="host">
           <option>-- None --</option>
         </select>
     

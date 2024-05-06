@@ -93,14 +93,14 @@ function getKeynote(){
           if (xhr.status === 200) {
             // callback successful
             
-            const sponsors = JSON.parse(xhr.responseText);
-            node = document.getElementById('sponsors');
+            const speaker = JSON.parse(xhr.responseText);
+            node = document.getElementById('keynote-speaker');
  
             // create options using data we retrieved
-            sponsors.forEach((s) => {
+            speaker.forEach((s) => {
               const option = document.createElement('option');
-              option.value = s.SponsorId;
-              option.textContent = s.SponsorName;
+              option.value = s.SpeakerID;
+              option.textContent = s.SpeakerName;
               node.appendChild(option);
             })
             
@@ -129,14 +129,14 @@ function getHost(){
           if (xhr.status === 200) {
             // callback successful
             
-            const sponsors = JSON.parse(xhr.responseText);
-            node = document.getElementById('sponsors');
+            const host = JSON.parse(xhr.responseText);
+            node = document.getElementById('host');
  
             // create options using data we retrieved
-            sponsors.forEach((s) => {
+            host.forEach((s) => {
               const option = document.createElement('option');
-              option.value = s.SponsorId;
-              option.textContent = s.SponsorName;
+              option.value = s.UniversityID;
+              option.textContent = s.UniversityName;
               node.appendChild(option);
             })
             
@@ -165,14 +165,14 @@ function getPresenter(){
           if (xhr.status === 200) {
             // callback successful
             
-            const sponsors = JSON.parse(xhr.responseText);
-            node = document.getElementById('sponsors');
+            const presenter = JSON.parse(xhr.responseText);
+            node = document.getElementById('presenter');
  
             // create options using data we retrieved
-            sponsors.forEach((s) => {
+            presenter.forEach((s) => {
               const option = document.createElement('option');
-              option.value = s.SponsorId;
-              option.textContent = s.SponsorName;
+              option.value = s.PresenterID;
+              option.textContent = s.PresenterName;
               node.appendChild(option);
             })
             
