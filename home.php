@@ -13,10 +13,10 @@
     <h3 id="home-name"></h3>
     <div class="container flex-row">
       <button class="main-btn btn btn-warning btn-lg">Manage</button>
-      <button class="main-btn btn btn-primary btn-lg">Create</button>
+      <button class="main-btn btn btn-primary btn-lg" id='create'>Create</button>
       <button class="main-btn btn btn-success btn-lg">Attend</button>
     </div>
-    <div>
+    <div id='create-event'>
       <h4>Create event</h4>
       <!-- TODO: Finish post page -->
       <form action="submit_event.php" method="post">

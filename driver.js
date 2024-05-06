@@ -5,3 +5,14 @@ document.addEventListener('DOMContentLoaded', function() {
   getSponsors();
 });
 
+document.getElementById('create').addEventListener('click', ()=>{
+  var eForm = document.getElementById('create-event');
+  var computedStyle = window.getComputedStyle(eForm);
+
+  // eForm.style.display = (eForm.style.display === 'none') ? 'block' : 'none';
+  if (computedStyle.display === 'none') {
+    eForm.style.display = 'block';
+  } else {
+    eForm.style.display = 'none';
+  }
+})
