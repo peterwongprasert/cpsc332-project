@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   console.log('loaded');
+  console.log(sessionStorage);
+  document.getElementById("home-name").innerHTML = "Welcome " + sessionStorage.getItem("name") + "!";
   getSponsors();
 });
 
@@ -9,7 +11,7 @@ function getSponsors(){
   var xhr = new XMLHttpRequest();
 
   // Configure the request
-  xhr.open("GET", "getData.php?gs=getSponsors", true);
+  xhr.open("GET", "getData.php?gs", true);
 
   // Set up the callback function
   xhr.onreadystatechange = function() {

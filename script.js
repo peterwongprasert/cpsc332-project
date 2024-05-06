@@ -1,7 +1,3 @@
-function sjs(){
-  console.log('in script.js');
-}
-
 function signIn(e) {
   e.preventDefault();
 
@@ -22,9 +18,11 @@ function signIn(e) {
           if (xhr.status === 200) {
 
               // handle response here
-              if(xhr.responseText === 'success'){
-                console.log(typeof xhr.responseText)
-                window.location.href = "./home.html";
+              if(xhr.responseText){
+                response = JSON.parse(xhr.responseText)
+                sessionStorage.setItem("id", response['id']);
+                sessionStorage.setItem("name", response['name']);
+                window.location.href = "./home.php";
               } else{
                 document.getElementById('incorrect').style.display = 'block';
               }

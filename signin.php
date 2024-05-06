@@ -6,6 +6,8 @@
 
   // variables 
   $id;
+  $name;
+
   if(isset($_POST['username'])){
     $name = $_POST['username'];
   }
@@ -13,7 +15,7 @@
     $pw = $_POST['password'];
   }  
 
-  $sql = "SELECT UserID 
+  $sql = "SELECT UserID, Fname 
     FROM `User` 
     WHERE `Fname` = ? AND `Pw` = ?";
 
@@ -26,12 +28,17 @@
   while($row = $result->fetch_assoc()){
   //  echo "UserID: " . $row['UserID'];
     $id = $row['UserID'];
+    $name = $row['Fname'];
   }
 
   if($id){
     // echo $id . " <br>Sign in";
     $_SESSION['id'] = $id;
-    echo "success";
+    $_SESSION['name'] = $name;
+    // header('Location: ./home.php');
+    // echo "success";
+    $sArray = array("id" => $id, "name" => $name);
+    echo json_encode($sArray);
   }
 
 ?>

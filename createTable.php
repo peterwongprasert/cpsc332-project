@@ -19,4 +19,5 @@
     }
   }
   
+  createUserTable($db);
 ?>
