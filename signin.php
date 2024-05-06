@@ -30,13 +30,9 @@
     $id = $row['UserID'];
     $name = $row['Fname'];
   }
+  $result->free();
 
   if($id){
-    // echo $id . " <br>Sign in";
-    $_SESSION['id'] = $id;
-    $_SESSION['name'] = $name;
-    // header('Location: ./home.php');
-    // echo "success";
     $sArray = array("id" => $id, "name" => $name);
     echo json_encode($sArray);
   }

@@ -60,7 +60,7 @@
           <option>-- None --</option>
         </select>
     
-        <label for="keynote_speaker">Keynote Speaker:</label>
+        <label for="keynote-speaker">Keynote Speaker:</label>
         <select>
           <option>-- None --</option>
         </select>
