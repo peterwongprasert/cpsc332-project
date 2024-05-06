@@ -23,9 +23,6 @@
 
     echo json_encode($sponsors);
   }
-  
-
-  //TODO: GET host ['gh'], keynote ['gk'], presenter ['gs']
 
   if(isset($_GET['gk'])){
     $keynote = [];

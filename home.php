@@ -19,7 +19,7 @@
     <div id='create-event'>
       <h4>Create event</h4>
       <!-- TODO: Finish post page -->
-      <form action="submit_event.php" method="post">
+      <form action="submitEvent.php" method="post">
         <label for="event_name">Event Name:</label>
         <input type="text" id="event_name" name="event_name" required><br>
     
@@ -53,22 +53,22 @@
         <label for="sponsor">Sponsor:</label>
         <select id="sponsors" name="sponsor">
           <option>-- None --</option>
-        </select>
+        </select><br>
     
         <label for="presenter">Presenter:</label>
-        <select id='presenter'>
+        <select id='presenter' name="presenter">
           <option>-- None --</option>
-        </select>
+        </select><br>
     
         <label for="keynote-speaker">Keynote Speaker:</label>
-        <select id="keynote-speaker">
+        <select id="keynote-speaker" name="speaker">
           <option>-- None --</option>
-        </select>
+        </select><br>
     
         <label for="host">Host:</label>
-        <select id="host">
+        <select id="host" name="host">
           <option>-- None --</option>
-        </select>
+        </select><br>
     
         <button type="submit">Submit</button>
     </form>

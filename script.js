@@ -63,7 +63,7 @@ function getSponsors(){
             // create options using data we retrieved
             sponsors.forEach((s) => {
               const option = document.createElement('option');
-              option.value = s.SponsorId;
+              option.value = s.SponsorID;
               option.textContent = s.SponsorName;
               node.appendChild(option);
             })
