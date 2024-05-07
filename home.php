@@ -12,7 +12,7 @@
   <div class="home-container">
     <h3 id="home-name"></h3>
     <div class="container flex-row">
-      <button class="main-btn btn btn-warning btn-lg">Manage</button>
+      <button class="main-btn btn btn-warning btn-lg" id='manage'>Manage</button>
       <button class="main-btn btn btn-primary btn-lg" id='create'>Create</button>
       <button class="main-btn btn btn-success btn-lg">Attend</button>
     </div>
@@ -73,6 +73,18 @@
         <input id='organizer' name='organizer' hidden>
         <button type="submit">Submit</button>
     </form>
+    </div>
+    <div id='manage-event'>
+      <h4>Manage Events</h4>
+      <div class='events'>
+        <ol type='1'>
+          <li>
+            <label>Event Name</label>
+            <label>Start Time</label>
+            <button class="main-btn btn btn-danger" id='del'>Del</button>
+          </li>
+        </ol>
+      </div>
     </div>
   </div>
 </body>

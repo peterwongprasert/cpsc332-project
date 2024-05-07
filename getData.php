@@ -74,4 +74,24 @@
 
     echo json_encode($presenter);
   }
+
+  if(isset($_GET['ge'])){
+    $events = [];
+    $id = $_GET['ge'];
+    
+    $sql = "SELECT e.EventID, e.EventName, e.StartTime 
+    FROM `Event` e
+    JOIN `University` u ON e.HostedBy = u.UniversityID
+    WHERE Organizer = $id
+    ORDER BY e.StartTime ASC";
+
+    $result = $db->query($sql);
+    
+    while($row = $result->fetch_assoc()){
+      $events[] = $row;
+    }
+    $result->free();
+
+    echo json_encode($events);
+  }
 ?>

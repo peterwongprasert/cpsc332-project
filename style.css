@@ -1,6 +1,6 @@
  *, body{
-  color: var(--white);
-  background-color: #000;
+  /* color: var(--white);
+  background-color: #000; */
 }
 
 .center-text{
@@ -76,4 +76,11 @@
 
 #create-event{
   display: none;
+}
+
+.events > ol > li{
+  height: 12vh !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }

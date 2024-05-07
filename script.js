@@ -1,6 +1,9 @@
 function script(){
   console.log('script');
 }
+
+const id = sessionStorage.getItem('id');
+
 function signIn(e) {
   e.preventDefault();
 
@@ -78,7 +81,6 @@ function getSponsors(){
   xhr.send();
 }
 
-// TODO
 function getKeynote(){
 
   // Create an XMLHttpRequest object
@@ -114,7 +116,6 @@ function getKeynote(){
   xhr.send();
 }
 
-// TODO
 function getHost(){
 
   // Create an XMLHttpRequest object
@@ -150,7 +151,6 @@ function getHost(){
   xhr.send();
 }
 
-// TODO
 function getPresenter(){
 
   // Create an XMLHttpRequest object
@@ -185,3 +185,62 @@ function getPresenter(){
   // Send the request
   xhr.send();
 }
+
+function getEvents(){
+
+  var xhr = new XMLHttpRequest();
+
+  xhr.open('GET', "getData.php?ge=" + sessionStorage.getItem('id'), true);
+
+  xhr.onreadystatechange = function(){
+    if(xhr.readyState === XMLHttpRequest.DONE){
+      if(xhr.status === 200){
+        console.log(xhr.responseText);
+
+        // Assuming xhr.responseText contains the JSON array
+        var response = JSON.parse(xhr.responseText);
+        var eventsList = document.querySelector('.events ol');
+
+        // Clear existing list items
+        eventsList.innerHTML = '';
+
+        // Iterate over the JSON array and create list items
+        let count = 1;
+        response.forEach(function(event) {
+        
+          var listItem = document.createElement('li');
+
+          var listNo = document.createElement('label');
+          listNo.textContent = count;
+          
+          var eventNameLabel = document.createElement('label');
+          eventNameLabel.textContent = event.EventName;
+          
+          var startTimeLabel = document.createElement('label');
+          startTimeLabel.textContent = event.StartTime;
+          
+          var deleteButton = document.createElement('button');
+          deleteButton.textContent = 'Del';
+          deleteButton.classList.add('main-btn', 'btn', 'btn-danger');
+          deleteButton.setAttribute('id', `${id}.${event.EventID}`);
+          
+          // Add event listener to delete button if needed
+          listItem.appendChild(listNo);
+          listItem.appendChild(eventNameLabel);
+          listItem.appendChild(startTimeLabel);
+          listItem.appendChild(deleteButton);
+          
+          eventsList.appendChild(listItem);
+          count++;
+        });
+
+
+      }else {
+        console.log("Error: " + xhr.status);
+      }
+    }
+  };
+
+  xhr.send();
+}
+

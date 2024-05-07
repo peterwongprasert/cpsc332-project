@@ -51,42 +51,6 @@
     // echo $organizer. "<br>";
   }
 
-//   $sql = "INSERT INTO `Event`(
-//     `EventName`, 
-//     `Descript`, 
-//     `Organizer`, 
-//     `MaxCap`, 
-//     `StartTime`, 
-//     `EndTime`, 
-//     `Deadline`, 
-//     `isPublished`, 
-//     `HostedBy`, 
-//     `EventType`, 
-//     `Presenter`, 
-//     `Speaker`, 
-//     `EventStatus`, 
-//     `CreatedAt`
-//     ) VALUES (?, ?, ?, ?, ?, ?, ?, 1, ?, ?, ?, ?, 1, ?
-// )";
-
-// $stmt = $db->prepare($sql);
-// $stmt->bind_param("ssiisssiiii", 
-//   $name,
-//   $description,
-//   $organizer,
-//   $capacity,
-//   $startTime,
-//   $endTime,
-//   $deadline,
-//   $host,
-//   $eventType,
-//   $presenter,
-//   $speaker
-// );
-
-
-  // $stmt->execute();
-
   $sql = "INSERT INTO `Event`(
     `EventName`, 
     `Descript`, 
@@ -118,3 +82,6 @@
   )";
 
 mysqli_query($db, $sql);
+
+header("Location: home.php");
+exit();
