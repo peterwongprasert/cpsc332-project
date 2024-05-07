@@ -222,7 +222,7 @@ function getEvents(){
           var deleteButton = document.createElement('button');
           deleteButton.textContent = 'Del';
           deleteButton.classList.add('main-btn', 'btn', 'btn-danger');
-          deleteButton.setAttribute('id', `${id}.${event.EventID}`);
+          deleteButton.setAttribute('onclick', 'deleteEvent('+event.EventID+')');
           
           // Add event listener to delete button if needed
           listItem.appendChild(listNo);
@@ -244,3 +244,6 @@ function getEvents(){
   xhr.send();
 }
 
+function deleteEvent(id){
+  console.log('del ' + id);
+}

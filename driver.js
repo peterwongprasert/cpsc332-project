@@ -32,7 +32,3 @@ document.getElementById('manage').addEventListener('click', ()=>{
     eForm.style.display = 'none';
   }
 })
-
-document.getElementById('del').addEventListener('click', ()=>{
-  console.log(sessionStorage.getItem('id'));
-})
