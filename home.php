@@ -46,8 +46,8 @@
     
         <label for="event_type">Event Type:</label>
         <select id="event_type" name="event_type" required>
-            <option value="k">Keynote</option>
-            <option value="p">Presentation</option>
+            <option value="1">Keynote</option>
+            <option value="2">Presentation</option>
         </select><br>
     
         <label for="sponsor">Sponsor:</label>
@@ -70,6 +70,7 @@
           <option>-- None --</option>
         </select><br>
     
+        <input id='organizer' name='organizer' hidden>
         <button type="submit">Submit</button>
     </form>
     </div>

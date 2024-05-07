@@ -9,7 +9,7 @@
   if ($db->connect_errno) {
     die("Failed to connect to MySQL: " . $db->connect_error);
   }
-
+  // echo "connect";
   
   // EXAMPLE on how to use SELECT in PHP using prepared statements
   // $sql = "SELECT * FROM `Sponsor`";

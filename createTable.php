@@ -98,22 +98,23 @@
       Descript VARCHAR(64),
       Oraganizer INT, 
       MaxCap INT,
-      StartTime DATE,
-      EndTime DATE,
-      Deadline DATE,
-      Published DATE,
+      StartTime DATETIME,
+      EndTime DATETIME,
+      Deadline DATETIME,
+      Published DATETIME,
       HostedBy INT,
       EventType INT,
       Presenter INT,
       Speaker INT,
       EventStatus INT,
-      CreatedAt DATE DEFAULT CURRENT_TIMESTAMP,
-      FOREIGN KEY (Organizer) REFERENCES User(UserID),
+      CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (Oraganizer) REFERENCES User(UserID),
       FOREIGN KEY (HostedBy) REFERENCES University(UniversityID),
       FOREIGN KEY (EventType) REFERENCES EventType(EventTypeID),
       FOREIGN KEY (Presenter) REFERENCES Presenter(PresenterID),
-      FOREIGN KEY (Speaker) REFERENCES Keynote_Speaker(SpeakerID),
+      FOREIGN KEY (Speaker) REFERENCES Keynote_Speaker(SpeakerID)
       )";
+      
   
     if ($db->query($userTable)) {
       echo "Table Event created successfully";
