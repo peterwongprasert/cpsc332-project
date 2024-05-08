@@ -81,7 +81,7 @@
           <li>
             <label>Event Name</label>
             <label>Start Time</label>
-            <button class="main-btn btn btn-danger" id='del'>Del</button>
+            <button class="main-btn btn btn-danger del-butt" id='del'>Del</button>
           </li>
         </ol>
       </div>

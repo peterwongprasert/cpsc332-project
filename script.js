@@ -246,4 +246,22 @@ function getEvents(){
 
 function deleteEvent(id){
   console.log('del ' + id);
+
+  var xhr = new XMLHttpRequest();
+
+  xhr.open('POST', 'submitEvent.php?d='+id, true)
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          // console.log(xhr.status);
+          // console.log(xhr.responseText);
+          getEvents();
+          
+        } else {
+            console.log("Error: " + xhr.status);
+        }
+    }
+};
+
+  xhr.send();
 }
