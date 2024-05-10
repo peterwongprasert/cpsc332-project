@@ -8,14 +8,16 @@
     echo $d;
     $sql = "DELETE FROM `Event` WHERE `EventID` = $d";
 
-  }else if(isset($_POST['join']) && isset($_POST['id'])){
-    $eventID = $_POST['join'];
-    $userID = $_POST['id'];
+  }
+  // else if(isset($_POST['join']) && isset($_POST['id'])){
+  //   $eventID = $_POST['join'];
+  //   $userID = $_POST['id'];
     
-    $sql = "INSERT INTO `Attends`(`AttendeeID`, `EventID`)
-    VALUES($eventID, $userID)";
+  //   $sql = "INSERT INTO `Attends`(`AttendeeID`, `EventID`)
+  //   VALUES($eventID, $userID)";
 
-  }else{
+  // }
+  else{
     // posting code
 
     if(isset($_POST['event_name'])){
