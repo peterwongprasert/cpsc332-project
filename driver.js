@@ -12,7 +12,20 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.getElementById('create').addEventListener('click', ()=>{
+  hideAll();
   let eForm = document.getElementById('create-event');
+  let computedStyle = window.getComputedStyle(eForm);
+
+  if (computedStyle.display === 'none') {
+    eForm.style.display = 'flex';
+  } else {
+    eForm.style.display = 'none';
+  }
+})
+
+document.getElementById('manage').addEventListener('click', ()=>{
+  hideAll();
+  let eForm = document.getElementById('manage-event');
   let computedStyle = window.getComputedStyle(eForm);
 
   if (computedStyle.display === 'none') {
@@ -22,12 +35,14 @@ document.getElementById('create').addEventListener('click', ()=>{
   }
 })
 
-document.getElementById('manage').addEventListener('click', ()=>{
-  let eForm = document.getElementById('manage-event');
+document.getElementById('attend').addEventListener('click', ()=>{
+  hideAll();
+  activeEvents();
+  let eForm = document.getElementById('attend-event');
   let computedStyle = window.getComputedStyle(eForm);
 
   if (computedStyle.display === 'none') {
-    eForm.style.display = 'block';
+    eForm.style.display = 'flex';
   } else {
     eForm.style.display = 'none';
   }

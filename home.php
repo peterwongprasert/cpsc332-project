@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
   <title>Home Page</title>
 </head>
 <body>
@@ -14,12 +15,12 @@
     <div class="container flex-row">
       <button class="main-btn btn btn-warning btn-lg" id='manage'>Manage</button>
       <button class="main-btn btn btn-primary btn-lg" id='create'>Create</button>
-      <button class="main-btn btn btn-success btn-lg">Attend</button>
+      <button class="main-btn btn btn-success btn-lg" id='attend'>Attend</button>
     </div>
     <div id='create-event'>
       <h4>Create event</h4>
       <!-- TODO: Finish post page -->
-      <form action="submitEvent.php" method="post">
+      <form action="submitEvent.php" method="post" id='create'>
         <label for="event_name">Event Name:</label>
         <input type="text" id="event_name" name="event_name" required><br>
     
@@ -84,6 +85,20 @@
             <button class="main-btn btn btn-danger del-butt" id='del'>Del</button>
           </li>
         </ol>
+      </div>
+    </div>
+    <div id='attend-event'>
+      <h4>Attend Event</h4>
+      <input placeholder='search' class="col-3">
+      <div class='open-events flex-col' id='open-events'>
+        <div class='event-container container'>
+          <label>Event</label>
+          <p>Description</p>
+          <label>Start Time</label>
+          <label>Capacity</label>
+          <label>Venue</label>
+          <button class='btn btn-success'>Join</button>
+        </div>
       </div>
     </div>
   </div>

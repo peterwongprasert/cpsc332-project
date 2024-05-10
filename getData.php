@@ -94,4 +94,28 @@
 
     echo json_encode($events);
   }
+
+  if(isset($_GET['ga'])){
+    $events = [];
+
+    // select all the events that are
+    // active
+    // not passed
+    // under capacity
+    // published
+    // we also need to join with the attends table
+    $sql = "SELECT * FROM `Event` e
+    JOIN `University` u ON  e.HostedBy = u.UniversityID
+    WHERE `StartTime` > DATE_SUB(CURDATE(), INTERVAL 1 DAY)";
+
+    $result = $db->query($sql);
+
+    while($row = $result->fetch_assoc()){
+      $events[] = $row;
+    }
+
+    $result->free();
+
+    echo json_encode($events);
+  }
 ?>

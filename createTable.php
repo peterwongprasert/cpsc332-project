@@ -129,7 +129,7 @@
       EventID INT NOT NULL,
       PresenterID INT NOT NULL,
       FOREIGN KEY (EventID) REFERENCES Event(EventID),
-      FOREIGN KEY (PresenterID) REFERENCES Presenter(PresenterID),
+      FOREIGN KEY (PresenterID) REFERENCES Presenter(PresenterID)
       )";
 
     if ($db->query($eventPresenter)) {
@@ -144,7 +144,7 @@
       EventID INT NOT NULL,
       SpeakerID INT NOT NULL,
       FOREIGN KEY (EventID) REFERENCES Event(EventID),
-      FOREIGN KEY (SpeakerID) REFERENCES Keynote_Speaker(SpeakerID),
+      FOREIGN KEY (SpeakerID) REFERENCES Keynote_Speaker(SpeakerID)
       )";
     
     if ($db->query($eventSpeaker)) {
@@ -159,7 +159,7 @@
       EventID INT NOT NULL,
       SponsorID INT NOT NULL,
       FOREIGN KEY (EventID) REFERENCES Event(EventID),
-      FOREIGN KEY (SponsorID) REFERENCES Sponsor(SponsorID),
+      FOREIGN KEY (SponsorID) REFERENCES Sponsor(SponsorID)
       )";
 
     if ($db->query($eventSponsor)) {
@@ -169,7 +169,15 @@
     }
   }
 
-  // create address table
+  function createAttendsTable($db){
+    $aTable = "CREATE TABLE `Attends`(
+      AtendeeID INT NOT NULL,
+      EventID INT NOT NULL, 
+      CreatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (AtendeeID) REFERENCES User(UserID),
+      FOREIGN KEY (EventID) REFERENCES Event(EventID)
+      )";
+  }
 
 
   
@@ -180,6 +188,7 @@
   createSponsorTable($db);
   createEventTypeTable($db);
   createEventTable($db);
+  createAttendsTable($db);
 
 
 ?>

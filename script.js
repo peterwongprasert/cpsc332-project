@@ -265,3 +265,101 @@ function deleteEvent(id){
 
   xhr.send();
 }
+
+function joinEvent(eventID){
+  console.log('joinEvent', eventID);
+  let id = sessionStorage.getItem('id');
+  var xhr = new XMLHttpRequest();
+
+  xhr.open('POST', 'joinEvent.php', true)
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          console.log(xhr.responseText);
+          
+        } else {
+            console.log("Error: " + xhr.status);
+        }
+    }
+};
+
+  const params = 'join=' + encodeURIComponent(eventID) + '&id=' + id;
+  xhr.send(params);
+}
+
+function activeEvents(q){
+  console.log('activeEvents');
+  var xhr = new XMLHttpRequest();
+
+  xhr.open('POST', 'getData.php?ga='+q, true)
+  xhr.onreadystatechange = function() {
+  if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        console.log(xhr.responseText);
+        events = JSON.parse(xhr.responseText);
+        console.log(typeof events);
+        let openEvents = document.getElementById('open-events')
+        events.forEach((event) => {
+          console.log(event);
+          const eventContainer = document.createElement('div');
+          eventContainer.classList.add('event-container');
+
+          // eventContainer.innerHTML = `
+          //           <label>${event.EventName}</label>
+          //           <p>${event.Descript}</p>
+          //           <label>Start Time: ${event.StartTime}</label>
+          //           <label>Capacity: ${event.capacity}</label>
+          //           <label>Venue: ${event.venue}</label>
+          //           <button class='btn btn-success'>Join</button>
+          //       `;
+          let eventName = document.createElement('label');
+          eventName.classList.add('col-2')
+          eventName.textContent = event.EventName;
+
+          let description = document.createElement('p');
+          description.classList.add('col-4')
+          description.textContent = event.Descript;
+
+          let eDate = moment(event.StartTime)
+          let start = document.createElement('label');
+          start.textContent = eDate.format('MM-DD-YYYY h:m A');
+
+          let cap = document.createElement('label');
+          cap.textContent = event.Capacity;
+
+          let venue = document.createElement('label');
+          venue.classList.add('col-4')
+          venue.textContent = event.UniversityName;
+
+          let button = document.createElement('button');
+          button.classList.add(`btn`);
+          button.classList.add(`btn-success`);
+          button.classList.add(`btn-lg`);
+          button.addEventListener('click', () => {
+            joinEvent(event.EventID)
+          });
+
+          eventContainer.appendChild(eventName);
+          eventContainer.appendChild(description);
+          eventContainer.appendChild(start);
+          eventContainer.appendChild(cap);
+          eventContainer.appendChild(venue);
+          eventContainer.appendChild(button);
+
+          openEvents.appendChild(eventContainer);
+
+        });
+      } else {
+        console.log("Error: " + xhr.status);
+      }
+    }
+  };
+
+  xhr.send();
+}
+
+function hideAll(){
+  document.getElementById('create-event').style.display = 'none';
+  document.getElementById('manage-event').style.display = 'none';
+  document.getElementById('attend-event').style.display = 'none';
+}

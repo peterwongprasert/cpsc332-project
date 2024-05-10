@@ -8,6 +8,13 @@
     echo $d;
     $sql = "DELETE FROM `Event` WHERE `EventID` = $d";
 
+  }else if(isset($_POST['join']) && isset($_POST['id'])){
+    $eventID = $_POST['join'];
+    $userID = $_POST['id'];
+    
+    $sql = "INSERT INTO `Attends`(`AttendeeID`, `EventID`)
+    VALUES($eventID, $userID)";
+
   }else{
     // posting code
 
@@ -83,5 +90,6 @@
     header("Location: home.php");
   }
 mysqli_query($db, $sql);
+// echo 'success';
   
 exit();
