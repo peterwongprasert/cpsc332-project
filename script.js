@@ -272,6 +272,7 @@ function joinEvent(eventID){
   var xhr = new XMLHttpRequest();
 
   xhr.open('POST', 'joinEvent.php', true)
+  xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
   xhr.onreadystatechange = function() {
     if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
