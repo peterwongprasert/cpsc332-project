@@ -44,11 +44,15 @@
     
         <label for="deadline">Deadline:</label>
         <input type="date" id="deadline" name="deadline" required><br>
+
+        <label for="deadline">Publish Date:</label>
+        <input type="date" id="publish_date" required><br>
     
         <label for="event_type">Event Type:</label>
         <select id="event_type" name="event_type" required>
-            <option value="1">Keynote</option>
+            <option value="1">Poster</option>
             <option value="2">Presentation</option>
+            <option value="3">Online</option>
         </select><br>
     
         <label for="sponsor">Sponsor:</label>
@@ -76,6 +80,14 @@
     </form>
     </div>
     <div id='manage-event'>
+      <h4>Attending Events</h4>
+      <div class='flex-col' id='attending'>
+        <!-- <label>Event</label>
+        <p>Description</p>
+        <label>Start Time</label>
+        <label>Venue</label> -->
+      </div>
+
       <h4>Manage Events</h4>
       <div class='events'>
         <ol type='1'>
@@ -91,13 +103,13 @@
       <h4>Attend Event</h4>
       <input placeholder='search' class="col-3">
       <div class='open-events flex-col' id='open-events'>
-        <div class='event-container container'>
-          <label>Event</label>
-          <p>Description</p>
-          <label>Start Time</label>
+        <div class='event-container'>
+          <label class='col-1'>Event</label>
+          <p class='col-2'>Description</p>
+          <label class='col-2'>Start Time</label>
           <label>Capacity</label>
-          <label>Venue</label>
-          <button class='btn btn-success'>Join</button>
+          <label class='col-2'>Venue</label>
+          <!-- <button class='btn btn-success'>Join</button> -->
         </div>
       </div>
     </div>

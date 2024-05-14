@@ -186,6 +186,74 @@ function getPresenter(){
   xhr.send();
 }
 
+// USER EVENTS ATTENDING ==============================
+function getAttends(){
+  var xhr = new XMLHttpRequest();
+
+  xhr.open('GET', "getData.php?attending=" + sessionStorage.getItem('id'), true);
+  // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+  
+  xhr.onreadystatechange = function(){
+    if(xhr.readyState === XMLHttpRequest.DONE){
+      if(xhr.status === 200){
+        console.log(xhr.responseText);
+        let listTop = document.getElementById('attending');
+
+        // Assuming xhr.responseText contains the JSON array
+        var response = JSON.parse(xhr.responseText);
+
+        // Iterate over the JSON array and create list items
+        let count = 1;
+        response.forEach(function(e) {
+        
+          let containerDiv = document.createElement('div');
+          // containerDiv.classList.add('event-container');
+          // containerDiv.classList.add('container');
+          containerDiv.classList.add('flex-row')
+
+          let event = document.createElement('label');
+          event.classList.add('col-2')
+          event.textContent = e.EventName;
+
+          let des = document.createElement('p');
+          des.classList.add('col-4')
+          des.textContent = e.Descript;
+
+          let mDate = moment(e.StartTime);
+          let time = document.createElement('label');
+          time.textContent = mDate.format('MM-DD-YYYY h:m A');
+
+          let venue = document.createElement('label')
+          venue.textContent = e.UniversityName
+          e.EventType === "3" ? venue.textContent += " (Online)" : '';
+
+          let deleteButton = document.createElement('button');
+          deleteButton.textContent = 'Del';
+          deleteButton.classList.add('btn');
+          deleteButton.classList.add('btn-danger');
+          deleteButton.classList.add('btn-sm');
+          deleteButton.setAttribute('onclick', 'unAttend('+e.EventID+')');
+
+
+          containerDiv.appendChild(event);
+          containerDiv.appendChild(des);
+          containerDiv.appendChild(time);
+          containerDiv.appendChild(venue);
+          containerDiv.appendChild(deleteButton);
+
+          listTop.appendChild(containerDiv);
+        });
+
+
+      }else {
+        console.log("Error: " + xhr.status);
+      }
+    }
+  };
+
+  xhr.send();
+}
+
 function getEvents(){
 
   var xhr = new XMLHttpRequest();
@@ -288,6 +356,28 @@ function joinEvent(eventID){
   xhr.send(params);
 }
 
+function unAttend(eventID){
+  console.log('del ' + eventID);
+
+  var xhr = new XMLHttpRequest();
+
+  xhr.open('POST', 'joinEvent.php', true)
+  xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          console.log(xhr.responseText);
+          
+        } else {
+            console.log("Error: " + xhr.status);
+        }
+    }
+  };
+
+  const params = 'unjoin=' + encodeURIComponent(eventID) + '&id=' + id;
+  xhr.send(params);
+}
+
 function activeEvents(q){
   console.log('activeEvents');
   var xhr = new XMLHttpRequest();
@@ -305,37 +395,33 @@ function activeEvents(q){
           const eventContainer = document.createElement('div');
           eventContainer.classList.add('event-container');
 
-          // eventContainer.innerHTML = `
-          //           <label>${event.EventName}</label>
-          //           <p>${event.Descript}</p>
-          //           <label>Start Time: ${event.StartTime}</label>
-          //           <label>Capacity: ${event.capacity}</label>
-          //           <label>Venue: ${event.venue}</label>
-          //           <button class='btn btn-success'>Join</button>
-          //       `;
           let eventName = document.createElement('label');
-          eventName.classList.add('col-2')
+          eventName.classList.add('col-1')
           eventName.textContent = event.EventName;
 
           let description = document.createElement('p');
-          description.classList.add('col-4')
+          description.classList.add('col-2')
           description.textContent = event.Descript;
 
           let eDate = moment(event.StartTime)
           let start = document.createElement('label');
+          start.classList.add('col-2')
           start.textContent = eDate.format('MM-DD-YYYY h:m A');
 
           let cap = document.createElement('label');
-          cap.textContent = event.Capacity;
+          cap.textContent = `${event.AttendeeCount}/${event.MaxCap}`;
 
           let venue = document.createElement('label');
-          venue.classList.add('col-4')
+          venue.classList.add('col-2')
           venue.textContent = event.UniversityName;
 
           let button = document.createElement('button');
           button.classList.add(`btn`);
           button.classList.add(`btn-success`);
           button.classList.add(`btn-lg`);
+          if(event.AttendeeCount >= event.MaxCap){
+            button.disabled = true;
+          }
           button.addEventListener('click', () => {
             joinEvent(event.EventID)
           });

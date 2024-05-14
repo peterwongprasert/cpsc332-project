@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById("home-name").innerHTML = "Welcome " + sessionStorage.getItem("name") + "!";
   document.getElementById('organizer').value = sessionStorage.getItem('id');
   // document.getElementById('del').value = sessionStorage.getItem('id');
+  getAttends();
   getEvents();
   getSponsors();
   getKeynote();
