@@ -115,6 +115,32 @@
     echo json_encode($attending);
   }
 
+  if(isset($_POST['manage'])){
+    $eventID = $_POST['manage'];
+    $event = [];
+
+    // $sql = "SELECT * FROM `Event` e,
+    // JOIN `University` u ON u.UniversityID = e.HostedBy
+    // WHERE EventID = $eventID";
+
+    $sql = "SELECT e.*, COUNT(a.AttendeeID) AS AttendeeCount 
+    FROM `Event` e
+    JOIN `University` u ON u.UniversityID = e.HostedBy
+    LEFT JOIN `Attends` a ON e.EventID = a.EventID
+    WHERE e.EventID = $eventID
+    GROUP BY e.EventID";
+
+    $result = $db->query($sql);
+
+    while($row = $result->fetch_assoc()){
+      $event[] = $row;
+    }
+
+    $result->free();
+
+    echo json_encode($event);
+  }
+
   if(isset($_GET['ga'])){
     $events = [];
 

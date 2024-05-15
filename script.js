@@ -254,6 +254,8 @@ function getAttends(){
   xhr.send();
 }
 
+
+// EVENTS THAT THE USER HAS CREATED =============================
 function getEvents(){
 
   var xhr = new XMLHttpRequest();
@@ -287,16 +289,17 @@ function getEvents(){
           var startTimeLabel = document.createElement('label');
           startTimeLabel.textContent = event.StartTime;
           
-          var deleteButton = document.createElement('button');
-          deleteButton.textContent = 'Del';
-          deleteButton.classList.add('main-btn', 'btn', 'btn-danger');
-          deleteButton.setAttribute('onclick', 'deleteEvent('+event.EventID+')');
+          var manageButton = document.createElement('button');
+          manageButton.textContent = 'Manage';
+          manageButton.classList.add('main-btn', 'btn', 'btn-warning');
+          manageButton.setAttribute('onclick', 'manageEvent('+event.EventID+')');
+          // deleteButton.setAttribute('onclick', 'deleteEvent('+event.EventID+')');
           
           // Add event listener to delete button if needed
           listItem.appendChild(listNo);
           listItem.appendChild(eventNameLabel);
           listItem.appendChild(startTimeLabel);
-          listItem.appendChild(deleteButton);
+          listItem.appendChild(manageButton);
           
           eventsList.appendChild(listItem);
           count++;
@@ -332,6 +335,51 @@ function deleteEvent(id){
 };
 
   xhr.send();
+}
+
+function manageEvent(id){
+  window.location.href = "./manageEvent.php?eid=" + id;
+}
+
+function getEventDetails(id){
+  // Create an XMLHttpRequest object
+  var xhr = new XMLHttpRequest();
+
+  // Configure the request
+  xhr.open("POST", "getData.php", true);
+  xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+  // Set up the callback function
+  xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            details = JSON.parse(xhr.responseText);
+            console.log(details);
+            details = details[0];
+            document.getElementById('event-name').textContent = details.EventName;
+            document.getElementById('description').value = details.Descript;
+            document.getElementById('max-cap').value = details.MaxCap;
+            document.getElementById('start-time').value = details.StartTime;
+            document.getElementById('end-time').value = details.EndTime;
+            document.getElementById('deadline').value = details.Deadline;
+            if(details.isPublished === '1'){
+              document.getElementById('isPublished').checked = true;
+            }
+            document.getElementById('event-type').value = details.EventType;
+            document.getElementById('sponsors').value = details.Sponsor;
+            document.getElementById('presenter').value = details.Presenter;
+            document.getElementById('keynote-speaker').value = details.Speaker;
+            document.getElementById('host').value = details.HostedBy;
+
+          } else {
+            console.log("Error: " + xhr.status);
+          }
+      }
+  };
+
+  console.log(id);
+  const params = 'manage=' + encodeURIComponent(id);
+  // Send the request
+  xhr.send(params);
 }
 
 function joinEvent(eventID){
@@ -378,6 +426,7 @@ function unAttend(eventID){
   xhr.send(params);
 }
 
+// EVENTS THAT THE USER CAN SIGN UP FOR =======================
 function activeEvents(q){
   console.log('activeEvents');
   var xhr = new XMLHttpRequest();
