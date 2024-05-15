@@ -72,7 +72,7 @@
         <option value='3'>-- Postpone --</option>
       </select>
     </div>
-    <input id='eid' hidden>
+    <input id='eid' name='eid' hidden>
     <button type='submit'>Save</button>    
   </form>
 
