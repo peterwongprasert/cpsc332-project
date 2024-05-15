@@ -6,7 +6,7 @@
   <title>Document</title>
 </head>
 <body>
-  <form>
+  <form action='./submitEvent.php'>
     <h4 id='event-name'></h4>
     <div>
       <label for="description">Description:</label>
@@ -18,11 +18,11 @@
     </div>
     <div>
       <label for="start-time">Start Time:</label>
-      <input type='datetime-local' id='start-time'>
+      <input type='datetime' id='start-time'>
     </div>
     <div>
       <label for="end-time">End Time:</label>
-      <input type='datetime-local' id='end-time'>
+      <input type='datetime' id='end-time'>
     </div>
     <div>
       <label for="deadline">Deadline:</label>
@@ -63,8 +63,19 @@
       <select id="host" name="host">
         <option>-- None --</option>
       </select>
-    </div>    
+    </div>
+    <div>
+      <label for="status">Status:</label>
+      <select id="status" name="status">
+        <option value='1'>-- Active --</option>
+        <option value='2'>-- Cancel --</option>
+        <option value='3'>-- Postpone --</option>
+      </select>
+    </div>
+    <input id='eid' hidden>
+    <button type='submit'>Save</button>    
   </form>
+
 </body>
 
 <script src='./script.js'></script>

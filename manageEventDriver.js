@@ -1,18 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
-  callFunctions();
+  const url = window.location.search;
+  const urlParams = new URLSearchParams(url);
+  console.log(urlParams.get('eid'));
+
+  document.getElementById('eid').value = urlParams.get("eid");
+
+  callFunctions(urlParams.get("eid"));
 
   
   
 });
 
-function callFunctions(){
+function callFunctions(eid){
   getSponsors();
   getKeynote();
   getHost();
   getPresenter();
 
-  const url = window.location.search;
-  const urlParams = new URLSearchParams(url);
-  console.log(urlParams.get('eid'));
-  getEventDetails(urlParams.get("eid"));
+  
+  getEventDetails(eid);
 }
